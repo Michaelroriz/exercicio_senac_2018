@@ -10,4 +10,34 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+    <organization>
+        <name>Senac TADS PI3-B</name>
+    </organization>
+    
+    <developers>
+        <developer>
+            <id>michael-senac</id>
+            <name>Michael Roriz</name>
+        </developer>
+        <developer>
+            <id>bruno-senca</id>
+            <name>Bruno Martins</name>
+        </developer>
+        <developer>
+            <id>ramses-senca</id>
+            <name>Ramses</name>
+        </developer>
+        <developer>
+            <id>rone-senca</id>
+            <name>Rone</name>
+        </developer>
+    </developers>
+ 
+    <dependencies>
+        <dependency>
+            <artifactId>mysql-connector-java</artifactId>
+            <groupId>mysql</groupId>
+            <version>5.1.46</version>
+        </dependency>
+    </dependencies>
 </project>
