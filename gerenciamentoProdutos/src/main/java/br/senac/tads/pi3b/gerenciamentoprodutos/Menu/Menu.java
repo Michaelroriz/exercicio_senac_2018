@@ -1,8 +1,5 @@
 package br.senac.tads.pi3b.gerenciamentoprodutos.Menu;
 
-import com.mysql.jdbc.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -10,16 +7,6 @@ import java.util.Scanner;
  * @author michael.aroriz
  */
 public class Menu {
-
-    private Connection obterConexao() throws ClassNotFoundException, SQLException {
-        Connection conn = null;
-        Class.forName("com.mysql.jdbc.Driver");
-        conn = (Connection) DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/gerenciador-produto",
-                "root",
-                "");
-        return conn;
-    }
 
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
