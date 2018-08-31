@@ -9,7 +9,7 @@ import java.util.Scanner;
  *
  * @author michael.aroriz
  */
-public class Produtos {
+public class Menu {
 
     private Connection obterConexao() throws ClassNotFoundException, SQLException {
         Connection conn = null;
@@ -23,7 +23,7 @@ public class Produtos {
 
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        Produtos produto = new Produtos();
+  
         System.out.println("Digite a opção desejada abaixo:");
         System.out.println("(1) Consultar produto");
         System.out.println("(2) Incluir produto");
