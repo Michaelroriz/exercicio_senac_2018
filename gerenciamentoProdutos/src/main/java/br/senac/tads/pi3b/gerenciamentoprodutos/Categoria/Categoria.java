@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.tads.pi3b.gerenciamentoprodutos;
+package br.senac.tads.pi3b.gerenciamentoprodutos.Categoria;
 
 /**
  *
  * @author bruno.malmeida3
  */
-public class Produto {
-    
+public class Categoria {
+    private String nomeCategoria; 
 }

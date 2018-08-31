@@ -1,4 +1,4 @@
-package br.senac.tads.pi3b.gerenciamentoprodutos;
+package br.senac.tads.pi3b.gerenciamentoprodutos.Menu;
 
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
