@@ -12,7 +12,7 @@ import java.sql.SQLException;
  */
 public class ConnectionUtils {
     
-    private Connection obterConexao() throws ClassNotFoundException, SQLException 
+    protected Connection obterConexao() throws ClassNotFoundException, SQLException 
     {
         Connection conn = null;
         Class.forName("com.mysql.jdbc.Driver");
