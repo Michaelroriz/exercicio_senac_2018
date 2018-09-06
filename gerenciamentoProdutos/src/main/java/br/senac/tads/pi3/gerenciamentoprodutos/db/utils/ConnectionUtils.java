@@ -17,7 +17,7 @@ public class ConnectionUtils {
         Connection conn = null;
         Class.forName("com.mysql.jdbc.Driver");
         conn = (Connection) DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/gerenciador-produto",
+                "jdbc:mysql://localhost:3306/produtobd",
                 "root",
                 "");
         return conn;
