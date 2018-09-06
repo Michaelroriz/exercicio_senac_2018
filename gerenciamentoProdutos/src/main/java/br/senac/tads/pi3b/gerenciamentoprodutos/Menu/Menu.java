@@ -19,6 +19,7 @@ public class Menu {
         System.out.println("(2) Incluir produto");
         System.out.println("(3) Alterar produto");
         System.out.println("(4) Excluir produto");
+        System.out.println("(5) Listar produto");
         System.out.println("(0) Sair");
         opcao = entrada.nextInt();
                
@@ -42,9 +43,13 @@ public class Menu {
                     long id_excluir = entrada.nextLong();
                     p.excluirProduto(id_excluir);
                     break;
+                case 5:
+                    p.listar();
+                    break;
+                case 0:
+                    System.exit(0);
                 default:
-                    System.out.print("opcao inválida, digite novamente");
-                    opcao = entrada.nextInt();
+                    System.out.println("opcao inválida, digite novamente");                   
                     break;
             }
         }while(opcao!=0);

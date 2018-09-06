@@ -5,6 +5,8 @@
  */
 package br.senac.tads.pi3b.gerenciamentoprodutos.Produto;
 
+import java.sql.Date;
+
 public class Produto {
 
     private long id;
@@ -13,6 +15,20 @@ public class Produto {
     private float precoDeVenda;
     private float precoDeCompra;
     private int quantidade;
+    private Date data_cadastro;
+
+    public Produto() {
+    }
+
+    public Produto(long id, String nome, String descricao, float precoDeVenda, float precoDeCompra, int quantidade, Date data_cadastro) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.precoDeVenda = precoDeVenda;
+        this.precoDeCompra = precoDeCompra;
+        this.quantidade = quantidade;
+        this.data_cadastro = data_cadastro;
+    }
 
     public long getId() {
         return id;
@@ -57,6 +73,14 @@ public class Produto {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Date getData_cadastro() {
+        return data_cadastro;
+    }
+
+    public void setData_cadastro(Date data_cadastro) {
+        this.data_cadastro = data_cadastro;
     }
     
 }
