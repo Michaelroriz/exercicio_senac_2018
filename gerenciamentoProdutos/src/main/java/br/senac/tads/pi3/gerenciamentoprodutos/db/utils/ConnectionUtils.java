@@ -22,5 +22,4 @@ public class ConnectionUtils {
                 "");
         return conn;
     }
-    
 }
