@@ -9,6 +9,7 @@ package br.senac.tads.pi3b.gerenciamentoprodutos.Categoria;
  *
  * @author bruno.malmeida3
  */
-public class Categoria {
+public class Categoria 
+{
     private String nomeCategoria; 
 }
