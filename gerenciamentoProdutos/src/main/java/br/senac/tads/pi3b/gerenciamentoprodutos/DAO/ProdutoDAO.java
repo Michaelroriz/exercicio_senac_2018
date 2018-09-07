@@ -16,48 +16,70 @@ import java.util.Scanner;
  *
  * @author michael.aroriz
  */
-public class ProdutoDAO extends ConnectionUtils {
+public class ProdutoDAO extends ConnectionUtils 
+{
 
-    public void consultarProduto(long idProduto) {
+    public void consultarProduto(long idProduto) 
+    {
         PreparedStatement stmt = null;
         Connection conn = null;
 
         String sql = "SELECT NOME, DESCRICAO, PRECO_COMPRA, PRECO_VENDA,"
                 + "QUANTIDADE, DT_CADASTRO FROM PRODUTOBD.PRODUTO WHERE ID = ?";
 
-        try {
+        try 
+        {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
             stmt.setLong(1, idProduto);
             ResultSet resultado = stmt.executeQuery();
-            while (resultado.next()) {
-                System.out.println(resultado.getString(1) + " "
-                        + resultado.getString(2) + " " + resultado.getString(3)
-                        + " " + resultado.getString(4) + " " + resultado.getString(5)
-                        + " " + resultado.getString(6));
+            while (resultado.next()) 
+            {
+                System.out.println
+                (
+                    resultado.getString(1) + " "
+                    + resultado.getString(2) + " " + resultado.getString(3)
+                    + " " + resultado.getString(4) + " " + resultado.getString(5)
+                    + " " + resultado.getString(6)
+                );
             }
-        } catch (Exception e) {
-            System.out.println("Não foi possivel exibir as informações, falha "
-                    + "de conexão com o Banco de Dados" + e);
-        } finally {
-            if (stmt != null) {
-                try {
+        } 
+        catch (Exception e) 
+        {
+            System.out.println
+            (
+                "Não foi possivel exibir as informações, falha "
+                + "de conexão com o Banco de Dados" + e
+            );
+        } 
+        finally 
+        {
+            if (stmt != null) 
+            {
+                try 
+                {
                     stmt.close();
-                } catch (SQLException ex) {
+                } 
+                catch (SQLException ex) 
+                {
                     System.out.println("Erro ao fechar stmt.");
                 }
             }
-            if (conn != null) {
-                try {
+            if (conn != null) 
+            {
+                try 
+                {
                     conn.close();
-                } catch (SQLException ex) {
+                } catch (SQLException ex) 
+                {
                     System.out.println("Erro ao fechar conn.");
                 }
             }
         }
     }
 
-    public List<Produto> listar() {
+    public List<Produto> listar() 
+    {
         PreparedStatement stmt = null;
         Connection conn = null;
 
@@ -65,12 +87,14 @@ public class ProdutoDAO extends ConnectionUtils {
                 + "QUANTIDADE, DT_CADASTRO FROM PRODUTOBD.PRODUTO";
 
         List<Produto> lista = new ArrayList<Produto>();
-        try {
+        try 
+        {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
             ResultSet resultados = stmt.executeQuery(sql);
 
-            while (resultados.next()) {
+            while (resultados.next()) 
+            {
                 Long id = resultados.getLong("ID");
                 String nome = resultados.getString("NOME");
                 String descricao = resultados.getString("DESCRICAO");
@@ -78,29 +102,47 @@ public class ProdutoDAO extends ConnectionUtils {
                 float preco_venda = resultados.getFloat("PRECO_VENDA");
                 int qtd = resultados.getInt("QUANTIDADE");
                 Date dataCadastro = resultados.getDate("DT_CADASTRO");
-                System.out.println(id+" " +nome +" " + descricao+" "+preco_compra+" "+preco_venda+" "+qtd+" "+dataCadastro);
-//                Produto p = new Produto(id, nome, descricao, preco_compra,
-//                        preco_venda, qtd, dataCadastro);
-//
-//                lista.add(p);
+                System.out.println
+                (
+                    id+" " 
+                    +nome+" " 
+                    +descricao+" "
+                    +preco_compra+" "
+                    +preco_venda+" "
+                    +qtd+" "
+                    +dataCadastro
+                );
             }
 
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) 
+        {
             System.out.println("Não foi possível executar.");
-        } catch (ClassNotFoundException e) {
+        } 
+        catch (ClassNotFoundException e) 
+        {
             System.out.println("Não foi possível executar.");
-        } finally {
-            if (stmt != null) {
-                try {
+        } 
+        finally 
+        {
+            if (stmt != null) 
+            {
+                try 
+                {
                     stmt.close();
-                } catch (SQLException ex) {
+                } catch (SQLException ex) 
+                {
                     System.out.println("Erro ao fechar stmt.");
                 }
             }
-            if (conn != null) {
-                try {
+            if (conn != null) 
+            {
+                try 
+                {
                     conn.close();
-                } catch (SQLException ex) {
+                } 
+                catch (SQLException ex) 
+                {
                     System.out.println("Erro ao fechar conn.");
                 }
             }
@@ -110,7 +152,8 @@ public class ProdutoDAO extends ConnectionUtils {
         return lista;
     }
 
-    public void incluirProduto() {
+    public void incluirProduto() 
+    {
         Scanner entrada = new Scanner(System.in);
         System.out.print("Nome do produto: ");
         String nome = entrada.nextLine();
@@ -122,6 +165,7 @@ public class ProdutoDAO extends ConnectionUtils {
         float preco_venda = entrada.nextFloat();
         System.out.print("Quantidade: ");
         int qtd = entrada.nextInt();
+        
         // 1) Abrir conexao
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -130,7 +174,8 @@ public class ProdutoDAO extends ConnectionUtils {
                 + "PRECO_COMPRA, PRECO_VENDA, QUANTIDADE, DT_CADASTRO)"
                 + "VALUES (?, ?, ?, ?, ?, ?)";
 
-        try {
+        try 
+        {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, nome);
@@ -146,62 +191,92 @@ public class ProdutoDAO extends ConnectionUtils {
             stmt.executeUpdate();
             System.out.println("Contato cadastrado com sucesso");
 
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) 
+        {
             System.out.println("Não foi possível executar.");
-        } catch (ClassNotFoundException e) {
+        } 
+        catch (ClassNotFoundException e) 
+        {
             System.out.println("Não foi possível executar.");
-        } finally {
-            if (stmt != null) {
-                try {
+        } finally 
+        {
+            if (stmt != null) 
+            {
+                try 
+                {
                     stmt.close();
-                } catch (SQLException ex) {
+                } 
+                catch (SQLException ex) 
+                {
                     System.out.println("Erro ao fechar stmt.");
                 }
             }
-            if (conn != null) {
-                try {
+            if (conn != null) 
+            {
+                try 
+                {
                     conn.close();
-                } catch (SQLException ex) {
+                } 
+                catch (SQLException ex) 
+                {
                     System.out.println("Erro ao fechar conn.");
                 }
             }
         }
     }
 
-    public void excluirProduto(long idProduto) {
+    public void excluirProduto(long idProduto) 
+    {
         PreparedStatement stmt = null;
         Connection conn = null;
 
         String sql = "DELETE FROM PRODUTOBD.PRODUTO WHERE ID =" + idProduto;
-        try {
+        try 
+        {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
             stmt.executeUpdate();
             System.out.println("Contato excluido com sucesso");
-        } catch (ClassNotFoundException e) {
+        } 
+        catch (ClassNotFoundException e) 
+        {
             System.out.println("Não foi possível executar.");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) 
+        {
             System.out.println("Não foi possivel exibir as informações, falha "
                     + "de conexão com o Banco de Dados" + e);
-        } finally {
-            if (stmt != null) {
-                try {
+        }
+        finally 
+        {
+            if (stmt != null) 
+            {
+                try 
+                {
                     stmt.close();
-                } catch (SQLException ex) {
+                } 
+                catch (SQLException ex) 
+                {
                     System.out.println("Erro ao fechar stmt.");
                 }
             }
-            if (conn != null) {
-                try {
+            if (conn != null) 
+            {
+                try 
+                {
                     conn.close();
-                } catch (SQLException ex) {
+                } 
+                catch (SQLException ex) 
+                {
                     System.out.println("Erro ao fechar conn.");
                 }
             }
         }
     }
 
-    public void alterarDados(long idProduto) {
+    public void alterarDados(long idProduto) 
+    {
         PreparedStatement stmt = null;
         Connection conn = null;
         Produto p = new Produto();
@@ -220,7 +295,8 @@ public class ProdutoDAO extends ConnectionUtils {
         float preco_venda = entrada.nextFloat();
         System.out.print("Quantidade: ");
         int qtd = entrada.nextInt();
-        try {
+        try 
+        {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
 
@@ -231,23 +307,36 @@ public class ProdutoDAO extends ConnectionUtils {
             stmt.setInt(5, qtd);
             java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
             stmt.setDate(6, date);
+            
             // 2) Executar SQL
             stmt.executeUpdate();
             System.out.println("Produto alterado com sucesso");
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) 
+        {
             System.out.println("Não foi possível executar." + e);
-        } catch (ClassNotFoundException e) {
+        } 
+        catch (ClassNotFoundException e) 
+        {
             System.out.println("Não foi possível executar.");
-        } finally {
-            if (stmt != null) {
-                try {
+        } 
+        finally 
+        {
+            if (stmt != null) 
+            {
+                try 
+                {
                     stmt.close();
-                } catch (SQLException ex) {
+                } 
+                catch (SQLException ex) 
+                {
                     System.out.println("Erro ao fechar stmt.");
                 }
             }
-            if (conn != null) {
-                try {
+            if (conn != null) 
+            {
+                try 
+                {
                     conn.close();
                 } catch (SQLException ex) {
                     System.out.println("Erro ao fechar conn.");
