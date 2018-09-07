@@ -17,20 +17,20 @@ public class Menu {
         int opcao = -1;
         do{ 
         System.out.println("Digite a opção desejada abaixo:");
-        System.out.println("(1) Consultar produto");
-        System.out.println("(2) Incluir produto");
-        System.out.println("(3) Alterar produto");
-        System.out.println("(4) Excluir produto");
-        System.out.println("(5) Listar produto");
-        System.out.println("(6) Consultar produto categorizado");
-        System.out.println("(7) Categorizar produto");
+        System.out.println("(1) Consultar um produto");
+        System.out.println("(2) Incluir um produto");
+        System.out.println("(3) Alterar um produto");
+        System.out.println("(4) Excluir um produto");
+        System.out.println("(5) Listar um produto");
+        System.out.println("(6) Consultar um produto categorizado");
+        System.out.println("(7) Categorizar um produto");
         System.out.println("(0) Sair");
         opcao = entrada.nextInt();
                
         
             switch (opcao) {
                 case 1:
-                    System.out.println("ID do produto a ser consultado: ");
+                    System.out.println("Digite o ID do produto a ser consultado: ");
                     long id_concultar = entrada.nextLong();
                     p.consultarProduto(id_concultar);
                     break;
@@ -38,12 +38,12 @@ public class Menu {
                     p.incluirProduto();
                     break;
                 case 3:
-                    System.out.println("ID do produto a ser alterado: ");
+                    System.out.println("Digite o ID do produto a ser alterado: ");
                     long id_alterar = entrada.nextLong();
                     p.alterarDados(id_alterar);
                     break;
                 case 4:
-                    System.out.println("ID do produto a ser excluido: ");
+                    System.out.println("Digite o ID do produto a ser excluido: ");
                     long id_excluir = entrada.nextLong();
                     p.excluirProduto(id_excluir);
                     break;
@@ -51,12 +51,12 @@ public class Menu {
                     p.listar();
                     break;
                 case 6:
-                    System.out.println("ID do produto categorizado a ser consultado: ");
+                    System.out.println("Digite o ID do produto categorizado a ser consultado: ");
                     long id_consultCategoria = entrada.nextLong();
                     c.consultarProdutoCategorizado(id_consultCategoria);
                     break;
                 case 7:
-                    System.out.println("ID do produto a ser categorizado: ");
+                    System.out.println("Digite o ID do produto a ser categorizado: ");
                     long id_prod = entrada.nextLong();
                     c.categorizarProduto(id_prod);
                     break;
